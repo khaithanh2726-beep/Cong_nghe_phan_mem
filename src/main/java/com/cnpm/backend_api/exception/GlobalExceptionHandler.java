@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE).body(error);
     }
 
-    // Lỗi không tìm thấy tài nguyên
+    // Lỗi không tìm thấy file
     @ExceptionHandler(jakarta.persistence.EntityNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleEntityNotFound(jakarta.persistence.EntityNotFoundException ex) {
         Map<String, String> error = new HashMap<>();

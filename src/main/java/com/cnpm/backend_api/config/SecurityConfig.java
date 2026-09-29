@@ -40,10 +40,8 @@ public class SecurityConfig {
                     "/v3/api-docs/**",
                     "/v3/api-docs"
                 ).permitAll()
-                // Tất cả request còn lại cần JWT
                 .anyRequest().authenticated()
             )
-            // Thêm JWT filter trước filter xác thực mặc định
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

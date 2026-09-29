@@ -36,7 +36,6 @@ public class MediaFileServiceImpl implements MediaFileService {
 
         String originalFileName = file.getOriginalFilename();
 
-        // Validate định dạng file
         if (originalFileName == null || ALLOWED_EXTENSIONS.stream()
                 .noneMatch(ext -> originalFileName.toLowerCase().endsWith(ext))) {
             throw new RuntimeException(
@@ -91,7 +90,7 @@ public class MediaFileServiceImpl implements MediaFileService {
         mediaFile.setSourceLanguage(sourceLanguage);
         mediaFile.setTargetLanguage(targetLanguage);
 
-        // Mô phỏng đường dẫn file đã xử lý (thuyết minh đã dịch)
+        // Thuyết minh tự động
         String originalUrl = mediaFile.getOriginalFileUrl();
         String processedUrl = originalUrl.replace("uploads/", "uploads/processed/")
                 .replace(".", "_" + targetLanguage + ".");

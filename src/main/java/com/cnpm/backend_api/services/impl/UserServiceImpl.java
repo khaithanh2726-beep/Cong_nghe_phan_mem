@@ -44,11 +44,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public LoginResponse loginUser(LoginRequest request) {
-        // Tìm user theo username
+        // Tìm username
         User user = userRepository.findByUsername(request.getUsername())
             .orElseThrow(() -> new RuntimeException("Tài khoản không tồn tại!"));
 
-        // So sánh mật khẩu bằng BCrypt
+        // Kiểm tra mật khẩu
         if (!passwordEncoder.matches(request.getPassword(), user.getPasswordHash())) {
             throw new RuntimeException("Sai mật khẩu!");
         }
